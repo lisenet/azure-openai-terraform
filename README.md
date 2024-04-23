@@ -37,7 +37,7 @@ If you wish to restrict access to your IP only, you can do so by modifying the f
 ```
 network_acls {
   default_action = "DENY"
-  ip_rules       = ["1.2.3.4")]
+  ip_rules       = ["1.2.3.4"]
 }
 ```
 
