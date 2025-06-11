@@ -4,12 +4,16 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.100.0"
+      version = "4.32.0"
     }
   }
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    application_insights {
+      disable_generated_rule = true
+    }
+  }
+  subscription_id = var.azure_subscription_id
 }
-
