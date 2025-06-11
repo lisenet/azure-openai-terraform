@@ -15,6 +15,13 @@ resource "azurerm_cognitive_account" "main" {
   network_acls {
     default_action = "Allow"
   }
+
+  timeouts {
+    create = "20m"
+    read   = "5m"
+    update = "20m"
+    delete = "20m"
+  }
 }
 
 resource "azurerm_cognitive_deployment" "main" {
@@ -28,8 +35,15 @@ resource "azurerm_cognitive_deployment" "main" {
     version = var.openai_model_version
   }
 
-  scale {
-    type     = "Standard"
+  sku {
+    name     = "Standard"
     capacity = var.openai_tokens_per_minute
+  }
+
+  timeouts {
+    create = "20m"
+    read   = "5m"
+    update = "20m"
+    delete = "20m"
   }
 }
